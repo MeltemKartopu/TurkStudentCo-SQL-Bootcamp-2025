@@ -1,0 +1,1 @@
+# TurkStudentCo-SQL-Bootcamp-2025
