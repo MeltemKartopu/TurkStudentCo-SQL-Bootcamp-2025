@@ -6,7 +6,7 @@ Bu işlemi tek bir sorgu ile yapmalısınız. Sorguyu yazdıktan sonra, PostgreS
 sol alt kısmındaki Row sayısını, SQL sorgunuzda yorum satırında belirtmeniz
 gerekmektedir.*/
 -- Tüm kolon Null olan değer sorgusu için 
-SELECT COUNT(*)  --COUNT(*)Tüm sütunları NULL olan satırları sayar
+SELECT COUNT(*) AS Total_Null_Rows --COUNT(*)Tüm sütunları NULL olan satırları sayar
 FROM invoice 
 WHERE invoice_id IS NULL 
   AND customer_id IS NULL 
@@ -18,7 +18,10 @@ WHERE invoice_id IS NULL
   AND billingpostal_code IS NULL 
   AND total IS NULL;
 -- Tüm Sütunları NULL olan satır sayısı 0 dır. 
--- Total rows:1
+-- where koşulu ile tüm kolonlar NULL olan satırlar getirilir.
+-- COUNT(*) ile NULL olan satır sayısı getirilir.
+-- IS NULL ile NULL değer içeren satırlar getirilir.
+-- AS ile alias Total_Null_Rows olarak belirlenir.
 
 -- NULL Değer içeren Satırları Getirmek için sorgu 
 SELECT *
@@ -34,6 +37,9 @@ WHERE invoice_id IS NULL
   or total IS NULL;
 -- Total Rows: 209 adet null değer içeren satır bulunmaktadır. 
 -- billing_state kolonu neredeyse tamamen null değeri içermektedir.
+-- Eksik verilerin analizi için 2. yöntem kullanılabilir.
+-- invoice tablosundan tüm kolonlar seçilir ve NULL değer içeren satırlar getirilir.
+-- where koşulu ile her bir kolonun NULL değer içeren satırlar getirilir.
 
 /*2. Koordinasyondaki kişiler, Total değerlerinde bir hata olduğunu belirtiyorlar.
 Bu değerlerin iki katını görmek ve eski versiyonlarıyla birlikte karşılaştırmak için bir
